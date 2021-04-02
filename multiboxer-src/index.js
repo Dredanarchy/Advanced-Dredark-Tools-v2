@@ -22,7 +22,8 @@ io.on('connection', socket => {
 	socket.on("new-bot", (link) => {
 		(async () => {
 			const browser = await puppeteer.launch({
-				headless: false
+				headless: false,
+				args: ['--start-maximized']
 			});
 			const page = await browser.newPage();
 
