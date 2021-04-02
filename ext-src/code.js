@@ -149,13 +149,14 @@ function GUI(){
         function getInvite(){
             var f = document.getElementById("team_menu");
             f.children[0].children[1].children[0].click();
-            var i = f.children[0].children[3].children[1].children[0].children[1].textContent;
-
-            if(i == "https://drednot.io/invite" || i == "https://test.drednot.io/invite"){
-                return window.location.href;
-            }else{
-                return i;
+            var i;
+            try{
+            i = f.children[0].children[3].children[1].children[0].children[1].textContent;
+            }catch(e){
+                i = window.location.href;
             }
+            return i;
+
         }
     const n = ["cheat-menu","cheat_menu_button","exit_button"];
     exitBtn = document.getElementById(n[2]);
