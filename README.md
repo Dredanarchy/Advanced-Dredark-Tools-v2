@@ -36,7 +36,7 @@ v2 of advanced dredark tools
 
 # Installation Instructions For The Multiboxer
 
-1. Install Node & Npm by following these instructions for [Windows][https://phoenixnap.com/kb/install-node-js-npm-on-windows] or for [Mac.][https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm]
+1. Install Node & Npm by following these instructions for [Windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows) or for [Mac.](https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm)
 
 2. Download the .zip file and unzip it.
 
