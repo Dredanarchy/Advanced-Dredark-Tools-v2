@@ -392,10 +392,10 @@ function GUI(){
 			setClass(ao[1][2],"btn-small btn-green")
 				ao[1][1]=true;
                 if(!ao[1][6].checked){
-                afk = setInterval(a(),randomNumber(5000,10000));
+                afk = setInterval(()=>{a()},randomNumber(5000,10000));
                 heal = setInterval(()=>{h()},randomNumber(2000,3000));
             }else{
-                afk = setInterval(a(),randomNumber(5000,10000));
+                afk = setInterval(()=>{a()},randomNumber(5000,10000));
                 heal = setInterval(()=>{
                     if(!document.visibilityState == "hidden"){
                         var canvas,x,y,coord,c,p;
