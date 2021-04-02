@@ -42,7 +42,7 @@ v2 of advanced dredark tools
 
 3. Open Terminal or Command prompt in the unzipped directory
 
-4. Run `sudo npm install dependencies`
+4. Run `npm install dependencies`
 
 5. Run `node index.js`
 
