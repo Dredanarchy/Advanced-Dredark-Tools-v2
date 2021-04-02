@@ -23,7 +23,7 @@ io.on('connection', socket => {
 		(async () => {
 			const browser = await puppeteer.launch({
 				headless: false,
-				args: ['--start-maximized']
+				defaultViewport: null
 			});
 			const page = await browser.newPage();
 
