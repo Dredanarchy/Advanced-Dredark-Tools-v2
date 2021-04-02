@@ -5,9 +5,6 @@ var debugIdGlobal;
 let debuggerEnabled = false;
 names=["Kittycraft0","NEW","mentallmoky395","AbsentTeaLady"];
 var opened = false;
-if (!chrome.cookies) {
-  chrome.cookies = chrome.experimental.cookies;
-}
 function randomNumber(min, max) {  
   return Math.random() * (max - min) + min; 
 }  
