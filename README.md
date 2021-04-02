@@ -9,14 +9,15 @@ v2 of advanced dredark tools
 + Auto-Healing
 + Anti-AFK
 + Auto-Leave
-+ Multiboxing
++ Multiboxing (Needs Multiboxer server running)
 + Master GUI
 + Anti detection
 + Chat spammer
++ More on the way :D
 
 ![image](https://user-images.githubusercontent.com/36419194/113441791-c17bcb00-93a3-11eb-8599-426571079147.png)
 
-# Installation
+# Installation Instructions For The Extension 
 1. Download the .zip file and unzip it.
 
 2. Unzip the zip file into your location of choice.
@@ -32,3 +33,17 @@ v2 of advanced dredark tools
 7. Click okay.
 
 8. Have fun botting :D
+
+# Installation Instructions For The Multiboxer
+
+1. Install Node & Npm by following these instructions for [Windows][https://phoenixnap.com/kb/install-node-js-npm-on-windows] or for [Mac.][https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm]
+
+2. Download the .zip file and unzip it.
+
+3. Open Terminal or Command prompt in the unzipped directory
+
+4. Run `sudo npm install dependencies`
+
+5. Run `node index.js`
+
+6. Congrats the server has started and your set to multibox :)
