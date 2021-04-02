@@ -5,8 +5,7 @@
   "version": "1.1",
   "permissions": [
       "debugger",
-      "\u003Call_urls>",
-      "cookies"
+      "\u003Call_urls>"
   ],
   "background": {
     "scripts": ["background.js"],
