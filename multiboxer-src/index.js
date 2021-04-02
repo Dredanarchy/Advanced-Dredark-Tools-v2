@@ -27,9 +27,9 @@ io.on('connection', socket => {
 			const page = await browser.newPage();
 
 			await page.goto(link);
-			await setInterval(() =>{
-				await page.mouse.move(x,y);
-			},30)
+			await setInterval(async () => {
+				await page.mouse.move(x, y);
+			}, 30);
 			
 
 			socket.on("keydown",(e)=>{
