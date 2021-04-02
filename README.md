@@ -18,7 +18,7 @@ v2 of advanced dredark tools
 ![image](https://user-images.githubusercontent.com/36419194/113441791-c17bcb00-93a3-11eb-8599-426571079147.png)
 
 # Installation Instructions For The Extension 
-1. Download the .zip file and unzip it.
+1. Download the .zip [file](https://github.com/Dredanarchy/Advanced-Dredark-Tools-v2/releases/tag/v1.0) and unzip it.
 
 2. Unzip the zip file into your location of choice.
 
