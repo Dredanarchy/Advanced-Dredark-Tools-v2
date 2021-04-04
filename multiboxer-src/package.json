@@ -14,6 +14,6 @@
     "express": "^4.17.1",
     "http": "0.0.1-security",
     "puppeteer": "^8.0.0",
-    "socket.io": "^4.0.0"
+    "socket.io": "^4.0.1"
   }
 }
