@@ -244,7 +244,21 @@ function GUI(){
              <button class="btn-small btn-green" id="o4">New Bot</button>
              <button class="btn-small btn-yellow" id="o41">Pause Bots</button>
              <button class="btn-small btn-red" id="o42">Kill Bots</button>
+             <button class="btn-small btn-yellow" id="o43">Settings</button>
           </td>
+          <tbody id="o44" style="display:none">
+          <tr>
+             <td>
+             <td>
+             <td>
+             <p>
+                Link: <input id="o45">
+                </p>
+             </td>
+             </td>
+             </td>
+          </tr>
+          </tbody>
        </tr>
     </table>
  </div>
@@ -295,7 +309,11 @@ function GUI(){
             // pulser section
             document.getElementById("o4"),
             document.getElementById("o41"),
-            document.getElementById("o42")
+            document.getElementById("o42"),
+            document.getElementById("o43"),
+            "o44",
+            document.getElementById("o45"),
+            false
         ]
         
         
@@ -476,6 +494,9 @@ function GUI(){
 
         ao[3][0].addEventListener('click',function(){
             var e = getInvite();
+            if(ao[3][5].value.length > 0){
+                e = ao[3][5].value;
+            }
             socket.emit('new-bot',e);
         });
         ao[3][1].addEventListener('click',function(){
@@ -487,6 +508,16 @@ function GUI(){
         })
         ao[3][2].addEventListener('click',function(){
             socket.emit("kill-bots");
+        })
+        ao[3][3].addEventListener('click',function(){
+            if(ao[3][6]){
+                ao[3][6] = false;
+                hideElement(ao[3][4]);
+            }else{
+                ao[3][6] = true;
+                showElement(ao[3][4]);
+            }
+
         })
     
 }
