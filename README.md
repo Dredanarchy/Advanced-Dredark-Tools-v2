@@ -17,6 +17,10 @@ v2 of advanced dredark tools
 
 ![image](https://user-images.githubusercontent.com/36419194/113441791-c17bcb00-93a3-11eb-8599-426571079147.png)
 
+# For this all to work you must have this [extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) installed and have this checked in options page 
+![image](https://media.discordapp.net/attachments/752138183814283328/827710068644380702/unknown.png)
+
+
 # Installation Instructions For The Extension 
 1. Download the .zip [file](https://github.com/Dredanarchy/Advanced-Dredark-Tools-v2/releases/tag/v1.1) and unzip it.
 
