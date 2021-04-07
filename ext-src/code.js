@@ -79,7 +79,7 @@ randomWords2 = [
 window.onload = (event) => {
     setTimeout(() => {
         GUI();
-    }, 500)
+    }, 100)
 }
 
 function GUI() {
@@ -296,12 +296,46 @@ function GUI() {
           </tr>
           </tbody>
        </tr>
+
+       <tr>
+          <td>MOTD Spammer</td>
+          <td>
+             <button class="btn-small btn-red" id="m1">Toggle</button>
+             <button class="btn-small btn-yellow" id="m2">Settings</button>
+          </td>
+          <tbody id="m3" style="display:none">
+          <tr>
+             <td>
+             <td>
+             <td>
+                <p>
+                   <text id="m4">Delay: 100 Ms.</text>
+                   <input id="m5"class="center-vert" type="range" min="1" max="5000" style="width: 200px;" value="100">
+                </p>
+             </td>
+             </td>
+             </td>
+          </tr>
+          </tbody>
+       </tr>
+
     </table>
  </div>
 `;
     console.log(cheatMenu);
     cheatMenu.children[0].outerHTML = newCheatMenu;
     cheatMenuBtn.click();
+    var motdspam = {
+    	toggle: document.getElementById("m1"),
+    	settings: document.getElementById("m2"),
+    	delaydisplay: document.getElementById("m4"),
+    	delayinput: document.getElementById("m5"),
+    	stog: false,
+    	tt: false,
+    	edittext: document.getElementById("motd-edit-text"),
+    	eb: document.getElementById("motd-edit-button"),
+    	sb: document.querySelector("#motd-edit > button.btn-green")
+    }
     var ao = [
         [
             // anti-afk section
@@ -407,6 +441,24 @@ function GUI() {
     });
     hideElement(ao[0][1]);
     // event listeners
+
+    motdspam.toggle.addEventListener('click', function() {
+    	if(!motdspam.tt){
+            let s2 = setInterval(() => {
+                motdspam.eb.click();
+                motdspam.edittext.value = randomUnicode(4096);
+                motdspam.sb.click();
+            }, motdspam.delayinput.value)
+            window.spam2 = s2;
+            motdspam.tt = true;
+            setClass('m1', "btn-small btn-green")
+    	} else {
+            clearInterval(window.spam1);
+            setClass('m1', "btn-small btn-red")
+            motdspam.tt = false;
+    	}
+    });
+
     // event for anti-afk button
     ao[0][0].addEventListener('click', function() {
         if (!ao[0][4]) {
@@ -556,8 +608,21 @@ function GUI() {
             ao[2][4] = false;
         }
     });
+     motdspam.settings.addEventListener('click', function() {
+        if (!motdspam.stog) {
+            showElement('m3');
+            motdspam.stog = true;
+        } else {
+            hideElement('m3');
+            motdspam.stog = false;
+        }
+    });
     ao[2][8].addEventListener('input', function() {
         displaytime2(ao[2][7], ao[2][6]);
+    });
+
+     motdspam.delayinput.addEventListener('input', function() {
+        displaytime2('m5', 'm4');
     });
 
     ao[3][0].addEventListener('click', function() {
