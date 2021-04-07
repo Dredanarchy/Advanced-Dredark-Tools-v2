@@ -14,6 +14,9 @@ v2 of advanced dredark tools
 + Anti detection
 + Chat spammer
 + More on the way :D
++ MOTD spam
+
+[Spambot demo video](https://www.youtube.com/watch?v=0agwdunAUMw)
 
 ![image](https://user-images.githubusercontent.com/36419194/113441791-c17bcb00-93a3-11eb-8599-426571079147.png)
 
