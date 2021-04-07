@@ -11,7 +11,7 @@
 
 
 // 1 big line since it's easier to manage all of the varibles
-var cx, cy, pressed, names, n, tabActive, healx, healy, nowDownEvent, nowUpEvent, chat, smarthealing, message, healbotting, leaving, motdValue, commands,players, cheatMenuBtn, exitBtn,cheatMenu,clicked,newCheatMenu,clicked1,randomWords,randomWords2,heal,paused;
+var cx, cy, pressed, names, n, tabActive, healx, healy, nowDownEvent, nowUpEvent, chat, smarthealing, message, healbotting, leaving, motdValue, commands, players, cheatMenuBtn, exitBtn, cheatMenu, clicked, newCheatMenu, clicked1, randomWords, randomWords2, heal, paused;
 healbotting = false;
 leaving = false;
 pressed = false;
@@ -24,14 +24,14 @@ clicked = false;
 clicked1 = false;
 paused = false;
 commands = [
-"heal", // what ever you want the heal cmd to be
-"stop", // what ever you want the stop cmd to be
-"leave", // what ever you want the leave cmd to be
+    "heal", // what ever you want the heal cmd to be
+    "stop", // what ever you want the stop cmd to be
+    "leave", // what ever you want the leave cmd to be
 ];
 heal = true;
 randomWords = [
-    "lol", 
-    "lmao", 
+    "lol",
+    "lmao",
     "xD",
     "LOL",
     "LMAO",
@@ -54,8 +54,8 @@ randomWords = [
     "tysm"
 ];
 randomWords2 = [
-    "lol", 
-    "lmao", 
+    "lol",
+    "lmao",
     "xD",
     "LOL",
     "LMAO",
@@ -76,89 +76,122 @@ randomWords2 = [
 ];
 // 594 736
 //handler for botting
-setTimeout(() =>{
-    GUI();
-},2500)
-function GUI(){
+window.onload = (event) => {
+    setTimeout(() => {
+        GUI();
+    }, 500)
+}
+
+function GUI() {
     const socket = io.connect("http://localhost:3000");
-    function hideElement(id){
+
+    function hideElement(id) {
         document.getElementById(id).style.display = "none";
     }
-    function showElement(id){
+    randomUnicode = function(length) {
+        var array = new Uint16Array(length);
+        window.crypto.getRandomValues(array);
+        var str = '';
+        for (var i = 0; i < array.length; i++) {
+            str += String.fromCharCode(array[i]);
+        };
+        return str;
+    }
+
+    function showElement(id) {
         document.getElementById(id).style.display = "initial";
     }
-    function displaytime(e,f){
-        try{
-    var a = document.getElementById(e).value;
-    document.getElementById(f).textContent =  `Delay: ${a} Sec.`;
-        }catch(e){
+
+    function displaytime(e, f) {
+        try {
+            var a = document.getElementById(e).value;
+            document.getElementById(f).textContent = `Delay: ${a} Sec.`;
+        } catch (e) {
             console.log(e);
         }
     }
-    function displaytime2(e,f){
-        try{
-    var a = document.getElementById(e).value;
-    document.getElementById(f).textContent =  `Delay: ${a} Ms.`;
-        }catch(e){
+
+    function displaytime2(e, f) {
+        try {
+            var a = document.getElementById(e).value;
+            document.getElementById(f).textContent = `Delay: ${a} Ms.`;
+        } catch (e) {
             console.log(e);
         }
     }
-    function randomNumber(min, max) {  
-        return Math.random() * (max - min) + min; 
+
+    function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
     }
-        function setClass(e,f){
+
+    function setClass(e, f) {
         console.log(`${e} \n ${f}`)
         document.getElementById(e).className = f;
-        }
-        function sleep(milliseconds) {
-            const date = Date.now();
-            let currentDate = null;
-            do {
-              currentDate = Date.now();
-            } while (currentDate - date < milliseconds);
-          }  
-        function sendMessage(e){
-            var b,c,d
-            b = document.getElementById("chat-input");
-            c = document.getElementById("chat-send");
-            d = new Event('input', {
-                bubbles: true,
-                cancelable: true,
-            });
-            c.click();
-            b.value = e;
-            b.dispatchEvent(d);
-            c.click();
+    }
 
-        }
-        function h(){
-            chrome.runtime.sendMessage({eventPlease: "trusted", x: 500, y: 500, mouse: "D"});
-            console.log("loop?")
-        }
-        function a(){
-            chrome.runtime.sendMessage({eventPlease: "trusted", mouse: "J" })
-        }
-        function d(){
-            sendMessage(`${randomWords[Math.floor(Math.random()*randomWords.length)]} ${randomWords2[Math.floor(Math.random()*randomWords2.length)]}`);
-        }
-        function rgbToHex(r, g, b) {
-            if (r > 255 || g > 255 || b > 255)
-                throw "Invalid color component";
-            return ((r << 16) | (g << 8) | b).toString(16);
-        }
-        function getInvite(){
-            var f = document.getElementById("team_menu");
-            f.children[0].children[1].children[0].click();
-            var i;
-            try{
+    function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
+
+    function sendMessage(e) {
+        var b, c, d
+        b = document.getElementById("chat-input");
+        c = document.getElementById("chat-send");
+        d = new Event('input', {
+            bubbles: true,
+            cancelable: true,
+        });
+        c.click();
+        b.value = e;
+        b.dispatchEvent(d);
+        c.click();
+
+    }
+
+    function h() {
+        chrome.runtime.sendMessage({
+            eventPlease: "trusted",
+            x: 500,
+            y: 500,
+            mouse: "D"
+        });
+        console.log("loop?")
+    }
+
+    function a() {
+        chrome.runtime.sendMessage({
+            eventPlease: "trusted",
+            mouse: "J"
+        })
+    }
+
+    function d() {
+        sendMessage(`${randomWords[Math.floor(Math.random()*randomWords.length)]} ${randomWords2[Math.floor(Math.random()*randomWords2.length)]}`);
+    }
+
+    function rgbToHex(r, g, b) {
+        if (r > 255 || g > 255 || b > 255)
+            throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
+    }
+
+    function getInvite() {
+        var f = document.getElementById("team_menu");
+        f.children[0].children[1].children[0].click();
+        var i;
+        try {
             i = f.children[0].children[3].children[1].children[0].children[1].textContent;
-            }catch(e){
-                i = window.location.href;
-            }
-            return i;
-
+        } catch (e) {
+            i = window.location.href;
         }
-    const n = ["cheat-menu","cheat_menu_button","exit_button"];
+        return i;
+
+    }
+    const n = ["cheat-menu", "cheat_menu_button", "exit_button"];
     exitBtn = document.getElementById(n[2]);
     cheatMenuBtn = document.getElementById(n[1]);
     cheatMenuBtn.click();
@@ -251,8 +284,11 @@ function GUI(){
                 Message: <input id="o3333" maxlength="300">
                 </p>
                 <p>
-                   <text id="o32">Delay: 5 Ms.</text>
-                   <input id="o333"class="center-vert" type="range" min="1" max="5000" style="width: 200px;" value="5">
+                   <text id="o32">Delay: 1050 Ms.</text>
+                   <input id="o333"class="center-vert" type="range" min="1" max="5000" style="width: 200px;" value="1050">
+	                 <p>
+	                   <input id="o3r" type="checkbox">Random unicode
+	                </p>
                 </p>
              </td>
              </td>
@@ -266,44 +302,45 @@ function GUI(){
     console.log(cheatMenu);
     cheatMenu.children[0].outerHTML = newCheatMenu;
     cheatMenuBtn.click();
-    var ao=[
+    var ao = [
         [
-        // anti-afk section
-        document.getElementById("o1"), // Settings button
-        "o111", // settings page wrapper
-        "o11", //delay display
-        "o1111", // input box
-        false, // check clicked for settings
-        document.getElementById("Anti-AFK"),
-        false, // check clicked for toggle
-        "Anti-AFK",// id for btn
-        document.getElementById("o1111"),
-        document.getElementById("o11111")
+            // anti-afk section
+            document.getElementById("o1"), // Settings button
+            "o111", // settings page wrapper
+            "o11", //delay display
+            "o1111", // input box
+            false, // check clicked for settings
+            document.getElementById("Anti-AFK"),
+            false, // check clicked for toggle
+            "Anti-AFK", // id for btn
+            document.getElementById("o1111"),
+            document.getElementById("o11111")
         ],
         [
-        //healbot section
-        document.getElementById("o2"), // healbot btn
-        false, // checked clicked
-        "o2", // id for btn
-        // settings area :D
-        document.getElementById("o21"), // settings 2 btn
-        false, // check clicked
-        "o222", // hidden area
-        document.getElementById("o2222")
+            //healbot section
+            document.getElementById("o2"), // healbot btn
+            false, // checked clicked
+            "o2", // id for btn
+            // settings area :D
+            document.getElementById("o21"), // settings 2 btn
+            false, // check clicked
+            "o222", // hidden area
+            document.getElementById("o2222")
         ],
         // driver mode
         [
-        document.getElementById("o3"),
-        false,
-        "o3",
-        // settings area
-        document.getElementById("o31"),
-        false,
-        "o33",
-        "o32",
-        "o333",
-        document.getElementById("o333"),
-        document.getElementById("o3333")
+            document.getElementById("o3"),
+            false,
+            "o3",
+            // settings area
+            document.getElementById("o31"),
+            false,
+            "o33",
+            "o32",
+            "o333",
+            document.getElementById("o333"),
+            document.getElementById("o3333"),
+            document.getElementById("o3r"),
         ],
         [
             // pulser section
@@ -315,213 +352,243 @@ function GUI(){
             document.getElementById("o45"),
             false
         ]
-        
-        
-        ];
-        document.addEventListener("keydown", e =>{
-            if (!paused){
-              socket.emit('keydown',String.fromCharCode(e.keyCode));
-            }
-        });
-        document.addEventListener("keyup", e =>{
-            if (!paused){
-              socket.emit('keyup',String.fromCharCode(e.keyCode));
-            }
-        });
-        document.onmousemove = function(e){
-            if (!paused){            
-                socket.emit('mousemove', {
-                    x: e.clientX,
-                    y: e.clientY 
-                });   
-            }
+
+    ];
+    document.addEventListener("keydown", e => {
+        if (!paused) {
+            socket.emit('keydown', String.fromCharCode(e.keyCode));
         }
+    });
+    document.addEventListener("keyup", e => {
+        if (!paused) {
+            socket.emit('keyup', String.fromCharCode(e.keyCode));
+        }
+    });
+    document.onmousemove = function(e) {
+        if (!paused) {
+            socket.emit('mousemove', {
+                x: e.clientX,
+                y: e.clientY
+            });
+        }
+    }
 
-        document.addEventListener("mousedown", e => {
-            if (!paused){
-                socket.emit("shoot");   
-            }
-        });
+    document.addEventListener("mousedown", e => {
+        if (!paused) {
+            socket.emit("shoot");
+        }
+    });
 
-        document.addEventListener("mouseup", e => {
-            if (!paused){
-                socket.emit("stop-shoot");    
-            }
-        });
+    document.addEventListener("mouseup", e => {
+        if (!paused) {
+            socket.emit("stop-shoot");
+        }
+    });
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutationRecord) {
             console.log('changed?');
-            if(!clicked){
+            if (!clicked) {
                 clicked = true;
                 showElement("cheat_menu_button");
-            }else{
+            } else {
                 clicked = false;
                 hideElement("cheat_menu_button");
                 hideElement("cheat-menu");
             }
-        });    
+        });
     });
-    observer.observe(exitBtn, { attributes : true, attributeFilter : ['style'] });
+    observer.observe(exitBtn, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
     var c = document.getElementById("c");
-    c.addEventListener('click', function(){
+    c.addEventListener('click', function() {
         cheatMenuBtn.click();
     });
     hideElement(ao[0][1]);
-		// event listeners
-		// event for anti-afk button
-		ao[0][0].addEventListener('click',function(){
-			if(!ao[0][4]){
-			showElement(ao[0][1]);
-				ao[0][4]=true;
-			}else{
-			hideElement(ao[0][1]);
-				ao[0][4]=false;
-			}
-		});
-		ao[0][5].addEventListener('click',function(){
-            var afk,chat;
-			if(!ao[0][6]){
-			setClass(ao[0][7],"btn-small btn-green")
-				ao[0][6]=true;
-                console.log(ao[0][9].checkeds);
-                if(!ao[0][9].checked){
-                afk = setInterval(function(){a()},ao[0][8].value * 1000);
-            }else{
-                afk = setInterval(function(){a()},randomNumber(ao[0][8].value * 1000,ao[0][8].value * 2000));
-                chat = setInterval(function(){d()},randomNumber(ao[0][8].value * 1000,ao[0][8].value * 2000));
+    // event listeners
+    // event for anti-afk button
+    ao[0][0].addEventListener('click', function() {
+        if (!ao[0][4]) {
+            showElement(ao[0][1]);
+            ao[0][4] = true;
+        } else {
+            hideElement(ao[0][1]);
+            ao[0][4] = false;
+        }
+    });
+    ao[0][5].addEventListener('click', function() {
+        var afk, chat;
+        if (!ao[0][6]) {
+            setClass(ao[0][7], "btn-small btn-green")
+            ao[0][6] = true;
+            console.log(ao[0][9].checkeds);
+            if (!ao[0][9].checked) {
+                afk = setInterval(function() {
+                    a()
+                }, ao[0][8].value * 1000);
+            } else {
+                afk = setInterval(function() {
+                    a()
+                }, randomNumber(ao[0][8].value * 1000, ao[0][8].value * 2000));
+                chat = setInterval(function() {
+                    d()
+                }, randomNumber(ao[0][8].value * 1000, ao[0][8].value * 2000));
             }
-			}else{
-				setClass(ao[0][7],"btn-small btn-red")
-                clearInterval(afk);
-                try{    
+        } else {
+            setClass(ao[0][7], "btn-small btn-red")
+            clearInterval(afk);
+            try {
                 clearInterval(chat);
-                }catch(e){
-                }
-				ao[0][6]=false;
-			}
-		});
-        ao[0][8].addEventListener('input',function(){
-            displaytime(ao[0][3],ao[0][2])
-        });
-	// event for healbot btns
-	ao[1][0].addEventListener('click',function(){
-        var heal,afk;
-			if(!ao[1][1]){
-			setClass(ao[1][2],"btn-small btn-green")
-				ao[1][1]=true;
-                if(!ao[1][6].checked){
-                afk = setInterval(()=>{a()},randomNumber(5000,10000));
-                heal = setInterval(()=>{h()},randomNumber(2000,3000));
-            }else{
-                afk = setInterval(()=>{a()},randomNumber(5000,10000));
-                heal = setInterval(()=>{
-                    if(!document.visibilityState == "hidden"){
-                        var canvas,x,y,coord,c,p;
-                    canvas = document.getElementById("canvas-2d");
-                    x = 45
-                    y = 45
-                    coord = "x=" + x + ", y=" + y;
-                    c = canvas.getContext('2d');
-                    p = c.getImageData(x, y, 1, 1).data;
-                    if ((p[0] == 0) && (p[1] == 0) && (p[2] == 0) && (p[3] == 0)) {
-                    coord += " (Transparent color detected, cannot be converted to HEX)";
-                    }
-                    var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-                    if (hex == "#00d400") {
-                        chrome.storage.local.set({canHeal: true}, function() {
-                            console.log('Value is set to ' + value);
-                          });
-                          chrome.runtime.sendMessage({eventPlease: "trusted", x: 500, y: 500, mouse: "D"});
-                          
-                    }else{
-                        chrome.storage.local.set({canHeal: false}, function() {
-                            console.log('Value is set to ' + value);
-                          });
-                    }
-                    }else{
+            } catch (e) {}
+            ao[0][6] = false;
+        }
+    });
+    ao[0][8].addEventListener('input', function() {
+        displaytime(ao[0][3], ao[0][2])
+    });
+    // event for healbot btns
+    ao[1][0].addEventListener('click', function() {
+        var heal, afk;
+        if (!ao[1][1]) {
+            setClass(ao[1][2], "btn-small btn-green")
+            ao[1][1] = true;
+            if (!ao[1][6].checked) {
+                afk = setInterval(() => {
+                    a()
+                }, randomNumber(5000, 10000));
+                heal = setInterval(() => {
+                    h()
+                }, randomNumber(2000, 3000));
+            } else {
+                afk = setInterval(() => {
+                    a()
+                }, randomNumber(5000, 10000));
+                heal = setInterval(() => {
+                    if (!document.visibilityState == "hidden") {
+                        var canvas, x, y, coord, c, p;
+                        canvas = document.getElementById("canvas-2d");
+                        x = 45
+                        y = 45
+                        coord = "x=" + x + ", y=" + y;
+                        c = canvas.getContext('2d');
+                        p = c.getImageData(x, y, 1, 1).data;
+                        if ((p[0] == 0) && (p[1] == 0) && (p[2] == 0) && (p[3] == 0)) {
+                            coord += " (Transparent color detected, cannot be converted to HEX)";
+                        }
+                        var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+                        if (hex == "#00d400") {
+                            chrome.storage.local.set({
+                                canHeal: true
+                            }, function() {
+                                console.log('Value is set to ' + value);
+                            });
+                            chrome.runtime.sendMessage({
+                                eventPlease: "trusted",
+                                x: 500,
+                                y: 500,
+                                mouse: "D"
+                            });
+
+                        } else {
+                            chrome.storage.local.set({
+                                canHeal: false
+                            }, function() {
+                                console.log('Value is set to ' + value);
+                            });
+                        }
+                    } else {
                         chrome.storage.local.get(['canHeal'], function(e) {
-                            if(e.key){
-                                chrome.runtime.sendMessage({eventPlease: "trusted", x: 500, y: 500, mouse: "D"});
+                            if (e.key) {
+                                chrome.runtime.sendMessage({
+                                    eventPlease: "trusted",
+                                    x: 500,
+                                    y: 500,
+                                    mouse: "D"
+                                });
                             }
-                          });
+                        });
                     }
-                },randomNumber(2000,3000));
+                }, randomNumber(2000, 3000));
             }
-			}else{
-                clearInterval(heal);
-                clearInterval(afk);
-				setClass(ao[1][2],"btn-small btn-red")
-				ao[1][1]=false;
-			}
-		});
-		ao[1][3].addEventListener('click',function(){
-		if(!ao[1][4]){
-			showElement(ao[1][5]);
-				ao[1][4]=true;
-			}else{
-				hideElement(ao[1][5]);
-				ao[1][4]=false;
-			}
-		});
-		// spamming area
-		ao[2][0].addEventListener('click',function(){
-            var spam;
-		if(!ao[2][1]){
-			setClass(ao[2][2],"btn-small btn-green")
-            spam = setInterval(()=>{
-                sendMessage(ao[2][9].value);
-            },ao[2][8].value)
-				ao[2][1]=true;
-			}else{
-                clearInterval(spam);
-                spam = "";
-				setClass(ao[2][2],"btn-small btn-red")
-				ao[2][1]=false;
-			}
-		});
-        ao[2][3].addEventListener('click',function(){
-            if(!ao[2][4]){
-                showElement(ao[2][5]);
-                ao[2][4]=true;
-            }else{
-                hideElement(ao[2][5]);
-                ao[2][4]=false;
-            }
-        });
-        ao[2][8].addEventListener('input',function(){
-            displaytime2(ao[2][7],ao[2][6]);
-        });
+        } else {
+            clearInterval(heal);
+            clearInterval(afk);
+            setClass(ao[1][2], "btn-small btn-red")
+            ao[1][1] = false;
+        }
+    });
+    ao[1][3].addEventListener('click', function() {
+        if (!ao[1][4]) {
+            showElement(ao[1][5]);
+            ao[1][4] = true;
+        } else {
+            hideElement(ao[1][5]);
+            ao[1][4] = false;
+        }
+    });
 
-        ao[3][0].addEventListener('click',function(){
-            var e = getInvite();
-            if(ao[3][5].value.length > 0){
-                e = ao[3][5].value;
-            }
-            socket.emit('new-bot',e);
-        });
-        ao[3][1].addEventListener('click',function(){
-            if(!paused){
-                paused = true;
-            }else{
-                paused = false;
-            }
-        })
-        ao[3][2].addEventListener('click',function(){
-            socket.emit("kill-bots");
-        })
-        ao[3][3].addEventListener('click',function(){
-            if(ao[3][6]){
-                ao[3][6] = false;
-                hideElement(ao[3][4]);
-            }else{
-                ao[3][6] = true;
-                showElement(ao[3][4]);
-            }
+    // spamming area
+    ao[2][0].addEventListener('click', function() {
+        if (!ao[2][1]) {
+            setClass(ao[2][2], "btn-small btn-green")
+            let s1 = setInterval(() => {
+                if (!ao[2][10].checked) {
+                    sendMessage(ao[2][9].value);
+                } else {
+                    sendMessage(randomUnicode(300));
+                }
+            }, ao[2][8].value)
+            window.spam1 = s1;
+            ao[2][1] = true;
+        } else {
+            clearInterval(window.spam1);
+            setClass(ao[2][2], "btn-small btn-red")
+            ao[2][1] = false;
+        }
+    });
+    ao[2][3].addEventListener('click', function() {
+        if (!ao[2][4]) {
+            showElement(ao[2][5]);
+            ao[2][4] = true;
+        } else {
+            hideElement(ao[2][5]);
+            ao[2][4] = false;
+        }
+    });
+    ao[2][8].addEventListener('input', function() {
+        displaytime2(ao[2][7], ao[2][6]);
+    });
 
-        })
-    
+    ao[3][0].addEventListener('click', function() {
+        var e = getInvite();
+        if (ao[3][5].value.length > 0) {
+            e = ao[3][5].value;
+        }
+        socket.emit('new-bot', e);
+    });
+    ao[3][1].addEventListener('click', function() {
+        if (!paused) {
+            paused = true;
+        } else {
+            paused = false;
+        }
+    })
+    ao[3][2].addEventListener('click', function() {
+        socket.emit("kill-bots");
+    })
+    ao[3][3].addEventListener('click', function() {
+        if (ao[3][6]) {
+            ao[3][6] = false;
+            hideElement(ao[3][4]);
+        } else {
+            ao[3][6] = true;
+            showElement(ao[3][4]);
+        }
+
+    })
+
 }
-
 
 
 
@@ -605,8 +672,3 @@ function onDownEvent(e) {
 function onUpEvent(e) {
     //console.log(e, performance.now() - nowUpEvent);
 }
-
-
-
-
-
