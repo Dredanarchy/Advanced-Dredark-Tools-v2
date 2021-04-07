@@ -453,7 +453,7 @@ function GUI() {
             motdspam.tt = true;
             setClass('m1', "btn-small btn-green")
     	} else {
-            clearInterval(window.spam1);
+            clearInterval(window.spam2);
             setClass('m1', "btn-small btn-red")
             motdspam.tt = false;
     	}
