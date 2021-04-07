@@ -215,6 +215,28 @@ function GUI(){
        </tbody>
        </tr>
        <tr>
+          <td>Pulser/Multi-Boxer</td>
+          <td>
+             <button class="btn-small btn-green" id="o4">New Bot</button>
+             <button class="btn-small btn-yellow" id="o41">Pause Bots</button>
+             <button class="btn-small btn-red" id="o42">Kill Bots</button>
+             <button class="btn-small btn-yellow" id="o43">Settings</button>
+          </td>
+          <tbody id="o44" style="display:none">
+          <tr>
+             <td>
+             <td>
+             <td>
+             <p>
+                Link: <input id="o45">
+                </p>
+             </td>
+             </td>
+             </td>
+          </tr>
+          </tbody>
+       </tr>
+       <tr>
           <td>Chat Spammer</td>
           <td>
              <button class="btn-small btn-red" id="o3">Toggle</button>
@@ -231,28 +253,6 @@ function GUI(){
                 <p>
                    <text id="o32">Delay: 5 Ms.</text>
                    <input id="o333"class="center-vert" type="range" min="1" max="5000" style="width: 200px;" value="5">
-                </p>
-             </td>
-             </td>
-             </td>
-          </tr>
-          </tbody>
-       </tr>
-       <tr>
-          <td>Pulser/Multi-Boxer</td>
-          <td>
-             <button class="btn-small btn-green" id="o4">New Bot</button>
-             <button class="btn-small btn-yellow" id="o41">Pause Bots</button>
-             <button class="btn-small btn-red" id="o42">Kill Bots</button>
-             <button class="btn-small btn-yellow" id="o43">Settings</button>
-          </td>
-          <tbody id="o44" style="display:none">
-          <tr>
-             <td>
-             <td>
-             <td>
-             <p>
-                Link: <input id="o45">
                 </p>
              </td>
              </td>
