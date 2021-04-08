@@ -470,28 +470,27 @@ function GUI() {
         }
     });
     ao[0][5].addEventListener('click', function() {
-        var afk, chat;
         if (!ao[0][6]) {
             setClass(ao[0][7], "btn-small btn-green")
             ao[0][6] = true;
             console.log(ao[0][9].checkeds);
             if (!ao[0][9].checked) {
-                afk = setInterval(function() {
+                window.afk = setInterval(function() {
                     a()
                 }, ao[0][8].value * 1000);
             } else {
-                afk = setInterval(function() {
+                window.afk = setInterval(function() {
                     a()
                 }, randomNumber(ao[0][8].value * 1000, ao[0][8].value * 2000));
-                chat = setInterval(function() {
+                window.chat = setInterval(function() {
                     d()
                 }, randomNumber(ao[0][8].value * 1000, ao[0][8].value * 2000));
             }
         } else {
             setClass(ao[0][7], "btn-small btn-red")
-            clearInterval(afk);
+            clearInterval(window.afk);
             try {
-                clearInterval(chat);
+                clearInterval(window.chat);
             } catch (e) {}
             ao[0][6] = false;
         }
@@ -501,22 +500,21 @@ function GUI() {
     });
     // event for healbot btns
     ao[1][0].addEventListener('click', function() {
-        var heal, afk;
         if (!ao[1][1]) {
             setClass(ao[1][2], "btn-small btn-green")
             ao[1][1] = true;
             if (!ao[1][6].checked) {
-                afk = setInterval(() => {
+                window.afk1 = setInterval(() => {
                     a()
                 }, randomNumber(5000, 10000));
-                heal = setInterval(() => {
+                window.heal = setInterval(() => {
                     h()
                 }, randomNumber(2000, 3000));
             } else {
-                afk = setInterval(() => {
+                window.afk1 = setInterval(() => {
                     a()
                 }, randomNumber(5000, 10000));
-                heal = setInterval(() => {
+                window.heal = setInterval(() => {
                     if (!document.visibilityState == "hidden") {
                         var canvas, x, y, coord, c, p;
                         canvas = document.getElementById("canvas-2d");
@@ -564,8 +562,8 @@ function GUI() {
                 }, randomNumber(2000, 3000));
             }
         } else {
-            clearInterval(heal);
-            clearInterval(afk);
+            clearInterval(window.heal);
+            clearInterval(window.afk1);
             setClass(ao[1][2], "btn-small btn-red")
             ao[1][1] = false;
         }
