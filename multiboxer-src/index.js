@@ -60,6 +60,10 @@ io.on('connection', socket => {
 			socket.on("kill-bots", () => {
 				browser.close();
 			});
+
+			socket.on("Bad-Apple", () =>{
+				
+			})
 		})();
 	});
 });
