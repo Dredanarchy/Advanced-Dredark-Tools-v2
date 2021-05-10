@@ -1,6 +1,8 @@
 
 const http = require('http');
-
+var asciify = require('asciify-image');
+const testFolder = './frames/';
+const fs = require('fs');
 const server = http.createServer((req, res) => {
 	res.writeHead(200, {
 		"Content-Type": "text/plain"
@@ -12,9 +14,24 @@ const socket = require('socket.io');
 const io = socket(server);
 
 const puppeteer = require('puppeteer');
-
+var options = {
+	fit:    'box',
+	width:  30,
+	height: 30,
+	color: false
+  }
 var x;
 var y;
+fs.readdirSync(testFolder).forEach(file => {
+  		
+	asciify('frames/' + file, options, function (err, asciified) {
+if (err) throw err;
+console.log(`\nasciified`);
+});
+	
+	});
+
+
 
 io.on('connection', socket => {
 	console.log("client connected");
@@ -62,7 +79,7 @@ io.on('connection', socket => {
 			});
 
 			socket.on("Bad-Apple", () =>{
-				
+
 			})
 		})();
 	});

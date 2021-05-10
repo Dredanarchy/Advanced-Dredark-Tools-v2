@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "asciify-image": "^0.1.6",
     "dependencies": "0.0.1",
     "express": "^4.17.1",
     "http": "0.0.1-security",
