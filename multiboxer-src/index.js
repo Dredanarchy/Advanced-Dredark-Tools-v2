@@ -17,8 +17,8 @@ const io = socket(server);
 const puppeteer = require('puppeteer');
 var options = {
 	fit:    'box',
-	width:  30,
-	height: 30,
+	width:  33,
+	height: 15,
 	color: false
   }
 var x;
