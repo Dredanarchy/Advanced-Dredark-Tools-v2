@@ -13,7 +13,7 @@ v2 of advanced dredark tools
 + Master GUI
 + Anti detection
 + Chat spammer
-+ More on the way :D
++ Bad Apple MOTD bot
 + MOTD spam
 
 [Spambot demo video](https://www.youtube.com/watch?v=0agwdunAUMw)
