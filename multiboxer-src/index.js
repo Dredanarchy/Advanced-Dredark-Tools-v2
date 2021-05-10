@@ -26,7 +26,7 @@ fs.readdirSync(testFolder).forEach(file => {
   		
 	asciify('frames/' + file, options, function (err, asciified) {
 if (err) throw err;
-console.log(`\nasciified`);
+console.log(`\n${asciified}`);
 });
 	
 	});
