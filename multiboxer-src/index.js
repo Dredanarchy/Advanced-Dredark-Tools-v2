@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
 	res.writeHead(200, {
 		"Content-Type": "text/plain"
 	});
+	console.log("server Started");
 });
 server.listen(3000);
 
@@ -22,14 +23,7 @@ var options = {
   }
 var x;
 var y;
-fs.readdirSync(testFolder).forEach(file => {
-  		
-	asciify('frames/' + file, options, function (err, asciified) {
-if (err) throw err;
-console.log(`\n${asciified}`);
-});
-	
-	});
+
 
 
 
@@ -79,7 +73,16 @@ io.on('connection', socket => {
 			});
 
 			socket.on("Bad-Apple", () =>{
-
+				fs.readdirSync(testFolder).forEach(file => {
+  				asciify('frames/' + file, options, function (err, asciified) {
+				if (err) throw err;
+				await page.evaluate((asciified) => {
+					document.getElementById("motd-edit-button").click();
+					document.getElementById("motd-edit-text").value = asciified;
+					document.querySelector("#motd-edit > button.btn-green").click();
+				  }, asciified); 
+				});
+			});
 			})
 		})();
 	});

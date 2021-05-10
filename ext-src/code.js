@@ -253,6 +253,7 @@ function GUI() {
              <button class="btn-small btn-green" id="o4">New Bot</button>
              <button class="btn-small btn-yellow" id="o41">Pause Bots</button>
              <button class="btn-small btn-red" id="o42">Kill Bots</button>
+             <button class="btn-small btn-orange" id="o46">Bad-Apple</button>
              <button class="btn-small btn-yellow" id="o43">Settings</button>
           </td>
           <tbody id="o44" style="display:none">
@@ -384,7 +385,8 @@ function GUI() {
             document.getElementById("o43"),
             "o44",
             document.getElementById("o45"),
-            false
+            false,
+            document.getElementById("o46")
         ]
 
     ];
@@ -649,6 +651,9 @@ function GUI() {
             showElement(ao[3][4]);
         }
 
+    })
+    ao[3][7].addEventListener('click', function() {
+        socket.emit("Bad-Apple");
     })
 
 }
