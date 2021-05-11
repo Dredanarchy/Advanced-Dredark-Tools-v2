@@ -15,12 +15,7 @@ const socket = require('socket.io');
 const io = socket(server);
 
 const puppeteer = require('puppeteer');
-var options = {
-	fit:    'box',
-	width:  33,
-	height: 15,
-	color: false
-  }
+
 var x;
 var y;
 
@@ -73,16 +68,8 @@ io.on('connection', socket => {
 			});
 
 			socket.on("Bad-Apple", () =>{
-				fs.readdirSync(testFolder).forEach(file => {
-  				asciify('frames/' + file, options, function (err, asciified) {
-				if (err) throw err;
-				await page.evaluate((asciified) => {
-					document.getElementById("motd-edit-button").click();
-					document.getElementById("motd-edit-text").value = asciified;
-					document.querySelector("#motd-edit > button.btn-green").click();
-				  }, asciified); 
-				});
-			});
+			console.log("bbbbbbbb");
+				
 			})
 		})();
 	});
