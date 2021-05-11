@@ -17,7 +17,7 @@ fs.readdirSync(testFolder).forEach(file => {
     asciify('frames/' + file, options, function (err, asciified) {
   if (err) throw err;
         array.push(btoa(asciified));
-        fs.writeFileSync("thickaffile", JSON.stringify(array));
+        fs.writeFileSync("thickaffile.txt", JSON.stringify(array));
   });
 });
 
