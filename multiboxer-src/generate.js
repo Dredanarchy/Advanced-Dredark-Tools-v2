@@ -4,7 +4,7 @@ const fs = require('fs');
 var array = [];
 var options = {
 	fit:    'box',
-	width:  33,
+	width:  15,
 	height: 15,
 	color: false
   }
