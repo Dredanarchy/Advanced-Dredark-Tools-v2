@@ -8,15 +8,16 @@ var options = {
 	height: 15,
 	color: false
   }
-
+function btoa(e){
+    let buff = new Buffer(e);
+    let base64data = buff.toString('base64');
+    return base64data;  
+}
 fs.readdirSync(testFolder).forEach(file => {
     asciify('frames/' + file, options, function (err, asciified) {
   if (err) throw err;
         array.push(btoa(asciified));
+        fs.writeFileSync("thickaffile", JSON.stringify(array));
   });
 });
-var stream = fs.createWriteStream("thickaffile.txt");
-stream.once('open', function(fd) {
-  stream.write(JSON.stringify(array));
-  stream.end();
-});
+
