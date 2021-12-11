@@ -1,3 +1,8 @@
+# USE AT YOUR OWN RISK THE CURRENT ANTICHEAT DETECTS THIS THERE IS A HIGH CHANCE YOU WILL BE BANNED
+
+
+
+
 # Advanced-Dredark-Tools-v2
 v2 of advanced dredark tools
 
